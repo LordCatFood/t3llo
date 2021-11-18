@@ -18,7 +18,7 @@ sleep(.1)
 me.takeoff()
 sleep(.1)
 
-me.move_up(183)
+me.move_up(77)
 sleep(.1)
 
 me.move_forward(155)
