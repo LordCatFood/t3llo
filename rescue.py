@@ -5,6 +5,13 @@ from time import sleep
 
 me = tello.Tello()
 
+############ PARAMETERS ############
+fSpeed = 112 # Forward/Backward cm/sec
+lrspeed = 112 # Left/Right cm/sec
+aSpeed = 26 # Angular Velocity, Degrees/sec
+uSpeed = 26 # Up/Down cm/sec
+####################################
+
 me.connect()
 sleep(.1)
 
