@@ -7,6 +7,7 @@ kp.init()
 tello = Tello()
 tello.connect()
 print(tello.get_battery())
+tello.streamon()
         
 def getKeyboardInput():
     lr, fb, ud, yv = 0, 0, 0, 0
