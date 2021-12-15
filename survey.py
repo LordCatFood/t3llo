@@ -1,13 +1,15 @@
-import KeyPressModule as kp
-from time import sleep
+import time
 from djitellopy import tello
+import cv2
+import KeyPressModule as kp
 
 kp.init()
 
 tello = Tello()
 tello.connect()
 print(tello.get_battery())
-tello.stream()
+tello.streamon()
+global img
         
 def getKeyboardInput():
     lr, fb, ud, yv = 0, 0, 0, 0
@@ -27,13 +29,18 @@ def getKeyboardInput():
 
     if kp.getKey("q"): tello.land()
     if kp.getKey("e"): tello.takeoff()
+        
+    if kp.getKey("z"):
+        cv2.imwrite(f'Resources/Images/{time.time()}.jpg', img)
 
     return [lr, fb, ud, yv]
 
-if __name__ == '__main__':
-    init()
-    while True:
+while True:
         vals = getKeyboardInput();
         tello.send_rc_control(vals[0], vals[1], vals[2], vals[3]);
-        kp.getKey();
+        
+        img = tello.get_frame_read().frame
+        img = cv2.resize(img, (360, 240))
+        cv2.imshow("Image", img)
+        cv2.waitKey(1)
         sleep(0.05)
