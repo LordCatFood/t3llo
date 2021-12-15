@@ -1,7 +1,7 @@
-import time
 from djitellopy import tello
 import cv2
 import KeyPressModule as kp
+import time
 
 kp.init()
 
